@@ -1,0 +1,20 @@
+{
+  "success_rate": 1.0,
+  "mean_return": 0.0286,
+  "std_return": 0.7374,
+  "mean_steps_to_goal": 41.3,
+  "std_steps_to_goal": 16.42,
+  "convergence_episode": 278,
+  "sample_efficiency": 74942.0,
+  "path_optimality": 0.678,
+  "optimal_path_len": 28,
+  "total_episodes": 500,
+  "eval_success_rate": 1.0,
+  "eval_mean_return": 0.73,
+  "eval_mean_steps": 28.0,
+  "maze_size": 10,
+  "level": "small",
+  "difficulty": "hard",
+  "max_steps": 400,
+  "loss_count": 88517
+}

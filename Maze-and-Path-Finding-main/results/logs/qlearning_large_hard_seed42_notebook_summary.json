@@ -1,0 +1,18 @@
+{
+  "success_rate": 1.0,
+  "mean_return": -0.6644,
+  "std_return": 0.4036,
+  "mean_steps_to_goal": 149.31,
+  "std_steps_to_goal": 19.24,
+  "convergence_episode": 128,
+  "sample_efficiency": 769583.0,
+  "path_optimality": 0.8171,
+  "optimal_path_len": 122,
+  "total_episodes": 1000,
+  "eval_success_rate": 0.0,
+  "eval_mean_return": -100.0,
+  "eval_mean_steps": 10000.0,
+  "maze_size": 50,
+  "max_steps": 10000,
+  "run_id": "qlearning_large_hard_seed42"
+}

@@ -1,0 +1,17 @@
+algorithm: qlearning
+level: small
+maze_size: 10
+difficulty: medium
+seed: 42
+
+training:
+  episodes: 5000
+  max_steps_multiplier: 4
+  log_every: 100
+
+hyperparameters:
+  learning_rate: 0.1
+  gamma: 0.99
+  epsilon_start: 1.0
+  epsilon_end: 0.01
+  epsilon_decay: 0.995

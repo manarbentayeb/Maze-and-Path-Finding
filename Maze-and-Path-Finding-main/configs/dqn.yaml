@@ -1,0 +1,22 @@
+env:
+  level: small
+  size: 10
+  difficulty: hard
+  seed: 42
+
+training:
+  episodes: 1000
+  log_every: 100
+
+agent:
+  learning_rate: 0.0005
+  gamma: 0.99
+  epsilon_start: 1.0
+  epsilon_end: 0.05
+  epsilon_decay: 0.995
+  buffer_size: 10000
+  batch_size: 32
+  target_update_every: 100
+  warmup_steps: 100
+  hidden_dims: [64, 64]
+  device: cpu

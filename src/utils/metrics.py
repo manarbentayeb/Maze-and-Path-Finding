@@ -156,17 +156,18 @@ class MetricsTracker:
         std_return    = float(np.std([r.total_reward  for r in last]))
 
         if successes:
-            steps_success  = [r.steps for r in successes]
-            mean_steps     = float(np.mean(steps_success))
-            std_steps      = float(np.std(steps_success))
+            steps_success = [r.steps for r in successes]
+            mean_steps = float(np.mean(steps_success))
+            std_steps = float(np.std(steps_success))
         else:
-            mean_steps = std_steps = float("nan")
+            mean_steps = None
+            std_steps = None
 
         # Path optimality: optimal / actual   (1.0 = perfect)
-        if self.optimal_path_len > 0 and not np.isnan(mean_steps):
+        if self.optimal_path_len > 0 and mean_steps is not None:
             path_optimality = self.optimal_path_len / mean_steps
         else:
-            path_optimality = float("nan")
+            path_optimality = None
 
         # Sample efficiency = convergence_episode × avg_steps_per_episode
         if self._convergence_episode is not None:
@@ -176,19 +177,17 @@ class MetricsTracker:
             avg_steps_to_conv = float(np.mean([r.steps for r in conv_records]))
             sample_efficiency = conv_idx * avg_steps_to_conv
         else:
-            sample_efficiency = float("nan")
+            sample_efficiency = None
 
         return {
             "success_rate"        : round(success_rate,   4),
             "mean_return"         : round(mean_return,    4),
             "std_return"          : round(std_return,     4),
-            "mean_steps_to_goal"  : round(mean_steps,     2),
-            "std_steps_to_goal"   : round(std_steps,      2),
+            "mean_steps_to_goal"  : round(mean_steps,     2) if mean_steps is not None else None,
+            "std_steps_to_goal"   : round(std_steps,      2) if std_steps is not None else None,
             "convergence_episode" : self._convergence_episode,
-            "sample_efficiency"   : (round(sample_efficiency, 0)
-                                     if not np.isnan(sample_efficiency) else None),
-            "path_optimality"     : (round(path_optimality, 4)
-                                     if not np.isnan(path_optimality) else None),
+            "sample_efficiency"   : round(sample_efficiency, 0) if sample_efficiency is not None else None,
+            "path_optimality"     : round(path_optimality, 4) if path_optimality is not None else None,
             "optimal_path_len"    : self.optimal_path_len,
             "total_episodes"      : n,
         }

@@ -1,6 +1,17 @@
 """src/env — maze environment package."""
 
 from .maze_env import MazeEnv, ACTIONS, ACTION_NAMES
+from .door_key_maze_env import (
+    AGENT,
+    DOOR_LOCKED,
+    DOOR_OPEN,
+    FREE,
+    GOAL,
+    KEY,
+    REWARD_TYPES,
+    WALL,
+    DoorKeyMazeEnv,
+)
 
 from .maze_generator import (
     LEVEL_SIZES,
@@ -21,8 +32,17 @@ from .rewards import (
 
 __all__ = [
     "MazeEnv",
+    "DoorKeyMazeEnv",
     "ACTIONS",
     "ACTION_NAMES",
+    "REWARD_TYPES",
+    "FREE",
+    "WALL",
+    "AGENT",
+    "GOAL",
+    "KEY",
+    "DOOR_LOCKED",
+    "DOOR_OPEN",
     "LEVEL_SIZES",
     "DIFFICULTY_SPECS",
     "generate_maze",

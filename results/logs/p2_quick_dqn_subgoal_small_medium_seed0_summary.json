@@ -1,0 +1,36 @@
+{
+  "success_rate": 0.93,
+  "mean_return": -0.1269,
+  "std_return": 2.7777,
+  "mean_steps_to_goal": 75.74,
+  "std_steps_to_goal": 69.28,
+  "convergence_episode": 514,
+  "sample_efficiency": 150859.0,
+  "path_optimality": 0.729,
+  "optimal_path_len": 52,
+  "total_episodes": 1000,
+  "key_pickup_rate": 0.94,
+  "door_opening_rate": 0.94,
+  "subgoal_order_rate": 0.94,
+  "mean_steps_to_key": 31.29,
+  "mean_key_to_door_steps": 19.56,
+  "mean_optimal_path_len": 40.56,
+  "run_id": "p2_quick_dqn_subgoal_small_medium_seed0",
+  "algo": "dqn",
+  "reward": "subgoal",
+  "seed": 0,
+  "maze_level": "small",
+  "maze_size": 10,
+  "difficulty": "medium",
+  "key_pos": [
+    6,
+    0
+  ],
+  "door_pos": [
+    3,
+    6
+  ],
+  "dynamic_objects": true,
+  "n_dynamic_layouts": 4,
+  "metrics_path": "C:\\Users\\pc cam dz\\Desktop\\RL project\\results\\metrics\\p2_quick_dqn_subgoal_small_medium_seed0_metrics.npz"
+}

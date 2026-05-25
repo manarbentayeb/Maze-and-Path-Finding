@@ -1,0 +1,25 @@
+{
+  "run_id": "p2_quick_ppo_subgoal_small_medium_seed0",
+  "algo": "ppo",
+  "reward": "subgoal",
+  "seed": 0,
+  "maze_level": "small",
+  "maze_size": 10,
+  "difficulty": "medium",
+  "key_pos": [
+    0,
+    9
+  ],
+  "door_pos": [
+    7,
+    2
+  ],
+  "dynamic_objects": true,
+  "n_dynamic_layouts": 4,
+  "success_rate": 0.0,
+  "key_pickup_rate": 0.0,
+  "door_opening_rate": 0.0,
+  "key_pickup_rate_logged": 0.021259765625,
+  "door_opening_rate_logged": 0.00275390625,
+  "metrics_path": "C:\\Users\\pc cam dz\\Desktop\\RL project\\results\\metrics\\p2_quick_ppo_subgoal_small_medium_seed0_metrics.npz"
+}

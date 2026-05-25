@@ -3,3 +3,5 @@ numpy
 matplotlib
 pygame
 pytest
+torch
+stable-baselines3

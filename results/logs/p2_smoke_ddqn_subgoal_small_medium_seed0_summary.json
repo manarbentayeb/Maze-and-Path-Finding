@@ -1,0 +1,36 @@
+{
+  "success_rate": 0.0,
+  "mean_return": -60.561,
+  "std_return": 7.2585,
+  "mean_steps_to_goal": null,
+  "std_steps_to_goal": null,
+  "convergence_episode": null,
+  "sample_efficiency": null,
+  "path_optimality": null,
+  "optimal_path_len": 52,
+  "total_episodes": 10,
+  "key_pickup_rate": 0.4,
+  "door_opening_rate": 0.4,
+  "subgoal_order_rate": 0.4,
+  "mean_steps_to_key": 144.25,
+  "mean_key_to_door_steps": 116.5,
+  "mean_optimal_path_len": 43.6,
+  "run_id": "p2_smoke_ddqn_subgoal_small_medium_seed0",
+  "algo": "ddqn",
+  "reward": "subgoal",
+  "seed": 0,
+  "maze_level": "small",
+  "maze_size": 10,
+  "difficulty": "medium",
+  "key_pos": [
+    0,
+    9
+  ],
+  "door_pos": [
+    7,
+    2
+  ],
+  "dynamic_objects": true,
+  "n_dynamic_layouts": 4,
+  "metrics_path": "C:\\Users\\pc cam dz\\Desktop\\RL project\\results\\metrics\\p2_smoke_ddqn_subgoal_small_medium_seed0_metrics.npz"
+}

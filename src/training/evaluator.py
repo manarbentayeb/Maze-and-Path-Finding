@@ -54,3 +54,40 @@ def evaluate_qlearning(
         mean_steps=float(np.mean(steps)),
         paths=paths,
     )
+
+
+def evaluate_dqn(
+    env: MazeEnv,
+    agent,
+    episodes: int = 100,
+) -> EvaluationResult:
+    """Evaluate a DQN agent greedily."""
+    rewards: list[float] = []
+    steps: list[int] = []
+    successes: list[bool] = []
+    paths: list[list[tuple[int, int]]] = []
+
+    for _ in range(episodes):
+        obs, _ = env.reset()
+        total_reward = 0.0
+        path = [env.agent_pos]
+
+        for _ in range(env.max_steps):
+            action = agent.select_action(obs, training=False)
+            obs, reward, terminated, truncated, _ = env.step(action)
+            total_reward += reward
+            path.append(env.agent_pos)
+            if terminated or truncated:
+                break
+
+        rewards.append(total_reward)
+        steps.append(env.steps_taken)
+        successes.append(env.agent_pos == env.goal_pos)
+        paths.append(path)
+
+    return EvaluationResult(
+        success_rate=float(np.mean(successes)),
+        mean_return=float(np.mean(rewards)),
+        mean_steps=float(np.mean(steps)),
+        paths=paths,
+    )

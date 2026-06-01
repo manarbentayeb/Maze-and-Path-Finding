@@ -75,9 +75,9 @@ class SparseWithPenalty(RewardFunction):
 
     def __init__(
         self,
-        goal_reward  : float = 1.0,
-        wall_penalty : float = 0.5,   # will be negated inside compute()
-        step_penalty : float = 0.01,  # will be negated inside compute()
+        goal_reward  : float = 10.0,
+        wall_penalty : float = 0.3,    # will be negated inside compute()
+        step_penalty : float = 0.001,  # will be negated inside compute()
     ):
         self.goal_reward  = goal_reward
         self.wall_penalty = wall_penalty

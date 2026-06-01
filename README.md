@@ -123,15 +123,15 @@ Q[s, a] = Q[s, a] + alpha * (reward + gamma * max(Q[s_next]) - Q[s, a])
 configs/
   env.yaml                 Environment configuration
   qlearning.yaml           Q-learning configuration
-  dqn.yaml                 Placeholder/future DQN configuration
+  dqn.yaml                 DQN configuration
 
 src/
   agents/
     base_agent.py          Common agent interface
     qlearning_agent.py     Tabular Q-learning implementation
-    dqn_agent.py           Future DQN work
-    networks.py            Future neural network helpers
-    replay_buffer.py       Future replay buffer helper
+    dqn_agent.py           DQN implementation
+    networks.py            Neural network helpers
+    replay_buffer.py       Replay buffer helper
 
   env/
     maze_env.py            Maze environment
@@ -140,7 +140,7 @@ src/
 
   experiments/
     run_qlearning.py       Main Q-learning experiment runner
-    run_dqn.py             Future DQN runner
+    run_dqn.py             DQN experiment runner
     compare_algorithms.py  Future comparison script
 
   training/

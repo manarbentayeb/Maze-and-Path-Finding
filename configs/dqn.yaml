@@ -1,0 +1,23 @@
+algorithm: dqn
+level: small
+maze_size: 10
+difficulty: medium
+seed: 42
+
+training:
+  episodes: 500
+  max_steps_multiplier: 4
+  log_every: 50
+
+hyperparameters:
+  learning_rate: 0.001
+  gamma: 0.99
+  epsilon_start: 1.0
+  epsilon_end: 0.05
+  epsilon_decay: 0.995
+  buffer_size: 50000
+  batch_size: 64
+  target_update_every: 250
+  warmup_steps: 500
+  hidden_dims: [128, 128]
+  device: cpu

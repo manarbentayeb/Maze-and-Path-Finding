@@ -1,10 +1,4 @@
-"""Maze generation utilities for the Phase 1 direct-MDP environment.
-
-The first version used DFS carving plus a border repair path, which could make
-some mazes too easy. This generator creates exact-size obstacle mazes closer to
-the grid in the research sketches: free cells mixed with black obstacle blocks,
-while still guaranteeing that start and goal are connected.
-"""
+"""Maze generation utilities for the Phase 1 direct-MDP environment."""
 
 from __future__ import annotations
 
@@ -42,7 +36,6 @@ def generate_level_maze(
     seed: int | None = None,
     difficulty: str = "medium",
 ) -> np.ndarray:
-    """Generate a maze by named level: tiny, small, medium, or large."""
     if level not in LEVEL_SIZES:
         raise ValueError(f"Unknown level '{level}'. Available: {list(LEVEL_SIZES)}")
     return generate_maze(size=LEVEL_SIZES[level], seed=seed, difficulty=difficulty)
@@ -54,19 +47,6 @@ def generate_maze(
     difficulty: str = "medium",
     max_attempts: int = 300,
 ) -> np.ndarray:
-    """
-    Generate an exact ``size x size`` binary obstacle maze.
-
-    The generator samples wall blocks and individual obstacles, then accepts a
-    candidate only when:
-
-    - start and goal are free
-    - a path exists from start to goal
-    - the shortest path is not too close to the trivial Manhattan route
-
-    If no candidate reaches the target complexity, the longest solvable
-    candidate found is returned.
-    """
     if size < 5:
         raise ValueError("Maze size must be at least 5.")
     if difficulty not in DIFFICULTY_SPECS:
@@ -97,19 +77,16 @@ def generate_maze(
 
 
 def get_free_cells(maze: np.ndarray) -> List[Tuple[int, int]]:
-    """Return all free ``(row, col)`` cells."""
     rows, cols = np.where(maze == 0)
     return list(zip(rows.tolist(), cols.tolist()))
 
 
 def optimal_path_length(maze: np.ndarray) -> int:
-    """Return shortest start-to-goal path length in steps, or -1."""
     path = shortest_path(maze)
     return len(path) - 1 if path else -1
 
 
 def shortest_path(maze: np.ndarray) -> list[tuple[int, int]]:
-    """Return one shortest path from start to goal using BFS."""
     size = maze.shape[0]
     start = (0, 0)
     goal = (size - 1, size - 1)
@@ -124,12 +101,10 @@ def shortest_path(maze: np.ndarray) -> list[tuple[int, int]]:
         r, c = queue.popleft()
         if (r, c) == goal:
             return _reconstruct_path(parent, goal)
-
         for nr, nc in _neighbors(r, c, size):
             if maze[nr, nc] == 0 and (nr, nc) not in parent:
                 parent[(nr, nc)] = (r, c)
                 queue.append((nr, nc))
-
     return []
 
 
@@ -163,7 +138,7 @@ def _place_random_block(
     protected: set[tuple[int, int]],
 ) -> None:
     size = maze.shape[0]
-    max_side = max(2, min(5, size // 4))
+    max_side = max(2, min(3, size // 5))
     height = int(rng.integers(1, max_side + 1))
     width = int(rng.integers(1, max_side + 1))
     row = int(rng.integers(0, size - height + 1))
@@ -215,16 +190,13 @@ def _reconstruct_path(
 
 
 def _snake_fallback(size: int) -> np.ndarray:
-    """Deterministic nontrivial fallback that always reaches the goal."""
     maze = np.ones((size, size), dtype=np.int32)
-
     for r in range(size):
         if r % 2 == 0:
             maze[r, :] = 0
         else:
             gap = size - 1 if (r // 2) % 2 == 0 else 0
             maze[r, gap] = 0
-
     maze[0, 0] = 0
     maze[size - 1, size - 1] = 0
     return maze

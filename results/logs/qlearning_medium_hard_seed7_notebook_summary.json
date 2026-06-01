@@ -1,0 +1,18 @@
+{
+  "success_rate": 0.0,
+  "mean_return": -19.9494,
+  "std_return": 1.2868,
+  "mean_steps_to_goal": null,
+  "std_steps_to_goal": null,
+  "convergence_episode": null,
+  "sample_efficiency": null,
+  "path_optimality": null,
+  "optimal_path_len": -1,
+  "total_episodes": 5000,
+  "eval_success_rate": 0.0,
+  "eval_mean_return": -16.0,
+  "eval_mean_steps": 1600.0,
+  "maze_size": 20,
+  "max_steps": 1600,
+  "run_id": "qlearning_medium_hard_seed7"
+}

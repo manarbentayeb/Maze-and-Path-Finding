@@ -297,17 +297,4 @@ The tests cover:
 - Weighted mud penalties.
 - Dynamic obstacle solvability and change tracking.
 
-## Report
 
-A LaTeX research-style report is included in:
-
-```text
-report.tex
-```
-
-It references the existing figures in `results/plots/`, so compile it from the
-repository root with:
-
-```bash
-pdflatex report.tex
-```

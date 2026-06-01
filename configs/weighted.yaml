@@ -1,0 +1,70 @@
+phase: custom
+environment: WeightedMazeEnv
+
+maze:
+  type: weighted_cost_grid
+  level: small
+  size: 10
+  difficulty: medium
+  seed: 42
+  start: [0, 0]
+  goal: bottom_right
+  generation: phase1_obstacle_blocks
+  max_steps_factor: 4
+  mud_density: 0.2
+  mud_penalty: 0.05
+  levels:
+    tiny: 8
+    small: 10
+    medium: 20
+    large: 50
+  difficulties:
+    easy:
+      wall_density: 0.18
+    medium:
+      wall_density: 0.28
+    hard:
+      wall_density: 0.36
+
+observation:
+  encoding:
+    free: 1.0
+    wall: 0.0
+    agent: 2.0
+    goal: 3.0
+    mud: 4.0
+  shape: "size * size"
+
+rewards:
+  default: sparse
+  sparse:
+    goal_reward: 1.0
+    wall_penalty: 0.5
+    step_penalty: 0.01
+
+actions:
+  0: up
+  1: down
+  2: left
+  3: right
+
+qlearning:
+  episodes: 2000
+  alpha: 0.1
+  gamma: 0.99
+  eps_start: 1.0
+  eps_end: 0.01
+  eps_decay: 0.995
+
+dqn:
+  episodes: 500
+  lr: 0.001
+  gamma: 0.99
+  buffer_size: 50000
+  batch_size: 64
+  target_update_every: 250
+  warmup_steps: 500
+  hidden_dims: [128, 128]
+  eps_start: 1.0
+  eps_end: 0.05
+  eps_decay: 0.995

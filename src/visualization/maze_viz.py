@@ -9,6 +9,55 @@ import numpy as np
 
 from src.env.maze_generator import shortest_path
 
+def plot_weighted_maze(
+    env: Any,
+    path: Iterable[GridPos] | None = None,
+    *,
+    show_solution: bool = True,
+    title: str | None = None,
+    save_path: str | Path | None = None,
+    show: bool = False,
+):
+    """Draw a weighted maze showing mud cells."""
+    import matplotlib.pyplot as plt
+    from matplotlib.colors import ListedColormap
+    from matplotlib.patches import Patch
+    
+    fig, ax = plot_maze(
+        env, path=path, show_solution=show_solution, title=title, show=False
+    )
+    
+    # Draw mud cells
+    if hasattr(env, "mud_cells"):
+        for r, c in env.mud_cells:
+            _draw_cell(ax, (r, c), "#8B4513", zorder=2) # SaddleBrown for mud
+            
+    # Update legend
+    handles, labels = ax.get_legend_handles_labels()
+    handles.insert(2, Patch(facecolor="#8B4513", label="Mud"))
+    ax.legend(handles=handles, loc="upper center", bbox_to_anchor=(0.5, -0.035), ncol=3, frameon=False)
+    
+    if save_path is not None:
+        fig.savefig(save_path, dpi=150, bbox_inches="tight")
+        
+    if show:
+        plt.show()
+        
+    return fig, ax
+
+def plot_dynamic_maze(
+    env: Any,
+    path: Iterable[GridPos] | None = None,
+    *,
+    show_solution: bool = True,
+    title: str | None = None,
+    save_path: str | Path | None = None,
+    show: bool = False,
+):
+    """Draw a dynamic maze snapshot."""
+    return plot_maze(env, path=path, show_solution=show_solution, title=title, save_path=save_path, show=show)
+
+
 
 GridPos = tuple[int, int]
 

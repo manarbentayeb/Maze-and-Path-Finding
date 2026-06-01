@@ -21,3 +21,23 @@ def plot_q_heatmap(q_table: np.ndarray, maze: np.ndarray, title: str = "Q-value 
     ax.set_yticks([])
     fig.tight_layout()
     return fig
+
+def plot_q_heatmap_weighted(q_table: np.ndarray, maze: np.ndarray, title: str = "Q-value heatmap"):
+    import matplotlib.pyplot as plt
+    from matplotlib.patches import Rectangle
+    
+    fig = plot_q_heatmap(q_table, maze, title)
+    ax = fig.axes[0]
+    
+    # Overlay hatch pattern on mud cells (value 2 in weighted maze)
+    size = maze.shape[0]
+    for r in range(size):
+        for c in range(size):
+            if maze[r, c] == 2:
+                ax.add_patch(
+                    Rectangle(
+                        (c - 0.5, r - 0.5), 1.0, 1.0,
+                        fill=False, hatch='//', edgecolor='black', alpha=0.3, zorder=10
+                    )
+                )
+    return fig

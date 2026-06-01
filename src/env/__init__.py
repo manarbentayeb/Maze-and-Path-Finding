@@ -1,6 +1,8 @@
 """src/env — maze environment package."""
 
 from .maze_env import MazeEnv, ACTIONS, ACTION_NAMES
+from .weighted_maze_env import WeightedMazeEnv
+from .dynamic_maze_env import DynamicMazeEnv
 from .door_key_maze_env import (
     AGENT,
     DOOR_LOCKED,

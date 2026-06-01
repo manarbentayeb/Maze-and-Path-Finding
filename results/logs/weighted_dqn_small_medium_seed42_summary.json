@@ -1,0 +1,21 @@
+{
+  "success_rate": 0.32,
+  "mean_return": -6.7437,
+  "std_return": 9.9659,
+  "mean_steps_to_goal": 206.25,
+  "std_steps_to_goal": 91.73,
+  "convergence_episode": null,
+  "sample_efficiency": null,
+  "path_optimality": 0.1067,
+  "optimal_path_len": 22,
+  "total_episodes": 500,
+  "env_type": "weighted",
+  "eval_success_rate": 0.0,
+  "eval_mean_return": -0.45,
+  "eval_mean_steps": 400.0,
+  "maze_size": 10,
+  "max_steps": 400,
+  "loss_count": 178167,
+  "run_id": "weighted_dqn_small_medium_seed42",
+  "elapsed_sec": 3198.8
+}

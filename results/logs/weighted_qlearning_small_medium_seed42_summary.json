@@ -1,0 +1,20 @@
+{
+  "success_rate": 1.0,
+  "mean_return": 9.7528,
+  "std_return": 0.0767,
+  "mean_steps_to_goal": 24.25,
+  "std_steps_to_goal": 0.73,
+  "convergence_episode": 137,
+  "sample_efficiency": 33906.0,
+  "path_optimality": 0.9072,
+  "optimal_path_len": 22,
+  "total_episodes": 2000,
+  "env_type": "weighted",
+  "eval_success_rate": 1.0,
+  "eval_mean_return": 9.777,
+  "eval_mean_steps": 24.0,
+  "maze_size": 10,
+  "max_steps": 400,
+  "run_id": "weighted_qlearning_small_medium_seed42",
+  "elapsed_sec": 29.3
+}
